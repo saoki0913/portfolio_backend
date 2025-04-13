@@ -8,6 +8,7 @@ FastAPIとSupabaseを使用したポートフォリオサイト用のバック�
 - **Skills API**: スキル情報を取得するAPI
 - **About API**: プロフィール情報を取得するAPI
 - **Contact API**: 問い合わせフォームからのメッセージを受け取るAPI
+- **Hero API**: 自己紹介文とタイムラインを取得するAPI
 
 ## 環境構築
 
@@ -41,7 +42,7 @@ SUPABASE_KEY=your-supabase-api-key
 DATABASE_URL=postgresql://postgres:your-password@db.your-project.supabase.co:5432/postgres
 
 # APIの設定
-API_PREFIX=/api
+API_PREFIX=
 BACKEND_CORS_ORIGINS=["http://localhost:3000"]
 
 # メール設定
@@ -87,6 +88,11 @@ uvicorn app.main:app --reload
 
 - `POST /api/contact` - 問い合わせメッセージを送信
 
+### Hero API
+
+- `GET /api/hero/introduction` - 自己紹介文を取得
+- `GET /api/hero/timeline` - 経歴タイムラインを取得
+
 ## デプロイ (Render)
 
 1. GitHubリポジトリの作成とコードのプッシュ
@@ -98,7 +104,7 @@ uvicorn app.main:app --reload
 
 ## Supabase設定
 
-Supabaseに以下のテーブルを作成する必要があります：
+Supabaseに以下のテーブルを作成：
 
 1. `skill_categories` - スキルカテゴリ
 2. `skills` - スキル
@@ -111,5 +117,7 @@ Supabaseに以下のテーブルを作成する必要があります：
 9. `experiences` - 職歴情報
 10. `social_media` - SNS情報
 11. `contact_messages` - 問い合わせメッセージ
+12. `hero_introduction` - 自己紹介文
+13. `timeline_items` - 経歴タイムライン
 
 詳細なスキーマはコードの`models`ディレクトリを参照してください。 
